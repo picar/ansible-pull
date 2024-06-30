@@ -4,3 +4,12 @@
     name: 
     - sudo
     - openssh-server
+- name: Configure networking
+  ansible.builtin.copy:
+    src: "{{ ansible_hostname }}-interfaces.yml"
+    dest: /etc/network/interfaces
+    owner: root
+    group: root
+    mode: "0644"
+  notify: Restart networking
+
