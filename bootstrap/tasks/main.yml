@@ -12,6 +12,9 @@
     group: root
     mode: "0644"
   notify: Restart networking
+- debug:
+    msg: "{{ item }}"
+  with_items: "{{ groups }}"
 - name: Create Groups
   ansible.builtin.group:
     name: "{{ item.name }}"
@@ -24,4 +27,4 @@
     group: "{{ item.gid }}"
     createhome: yes
   with_items: "{{ users }}"
-  
+
