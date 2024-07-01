@@ -2,3 +2,11 @@
   connection: local
   roles:
     - role: bootstrap
+  vars:
+    groups:
+    - name: pcarette
+      gid: 60000
+    users:
+    - username: pcarette
+      uid: 60000
+      gid: 60000
