@@ -14,12 +14,12 @@
   notify: Restart networking
 - debug:
     msg: "{{ item }}"
-  loop: "{{ groups }}"
+  loop: "{{ usergroups }}"
 - name: Create Groups
   ansible.builtin.group:
     name: "{{ item.name }}"
     gid: "{{ item.gid }}"
-  loop: "{{ groups }}"
+  loop: "{{ usergroups }}"
 - name: Create Users
   ansible.builtin.user:
     name: "{{ item.username }}"
