@@ -3,7 +3,17 @@
   ansible.builtin.apt:
     name: 
     - sudo
-    - openssh-server
+    - vim
+    - iptutils-ping  
+- name: Configure networking
+  ansible.builtin.copy:
+    src: "{{ ansible_hostname }}-interfaces.yml"
+    dest: /etc/netplan/50-cloud-init.yaml
+    owner: root
+    group: root
+    mode: "0644"
+  notify: Restart networking
+  when: ansible_facts['distribution'] == 'Ubuntu'
 - name: Configure networking
   ansible.builtin.copy:
     src: "{{ ansible_hostname }}-interfaces.yml"
@@ -12,6 +22,7 @@
     group: root
     mode: "0644"
   notify: Restart networking
+  when: ansible_facts['distribution'] == 'Debian'
 - debug:
     msg: "{{ item }}"
   loop: "{{ usergroups }}"
