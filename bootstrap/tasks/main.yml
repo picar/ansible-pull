@@ -38,4 +38,11 @@
     group: "{{ item.gid }}"
     createhome: yes
   loop: "{{ users }}"
+- name: NOPASSWD for Sudo Group
+  ansible.builtin.copy:
+    src: "sudo-nopasswd"
+    dest: /etc/sudoers.d/sudo-nopasswd
+    owner: root
+    group: root
+    mode: "0600"  
 
