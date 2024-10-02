@@ -4,7 +4,7 @@
     name: 
     - sudo
     - vim
-    - iptutils-ping  
+    - iputils-ping  
 - name: Configure networking
   ansible.builtin.copy:
     src: "{{ ansible_hostname }}-interfaces.yml"
