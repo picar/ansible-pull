@@ -1,0 +1,12 @@
+- hosts: localhost
+  connection: local
+  vars:
+    usergroups:
+      - name: pcarette
+        gid: 60000
+    users:
+      - username: pcarette
+        uid: 60000
+        gid: 60000
+  roles:
+    - role: bootstrap
